@@ -6,14 +6,17 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  MatchResults,
+} from '@stencil/router';
 
 export namespace Components {
   interface AppHome {}
   interface AppProfile {
-    'name': string;
+    'match': MatchResults;
   }
   interface AppRoot {}
+  interface BaxemyrSokoban {}
 }
 
 declare global {
@@ -41,24 +44,33 @@ declare global {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLBaxemyrSokobanElement extends Components.BaxemyrSokoban, HTMLStencilElement {}
+  var HTMLBaxemyrSokobanElement: {
+    prototype: HTMLBaxemyrSokobanElement;
+    new (): HTMLBaxemyrSokobanElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'baxemyr-sokoban': HTMLBaxemyrSokobanElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
   interface AppProfile extends JSXBase.HTMLAttributes<HTMLAppProfileElement> {
-    'name'?: string;
+    'match'?: MatchResults;
   }
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
+  interface BaxemyrSokoban extends JSXBase.HTMLAttributes<HTMLBaxemyrSokobanElement> {}
 
   interface IntrinsicElements {
     'app-home': AppHome;
     'app-profile': AppProfile;
     'app-root': AppRoot;
+    'baxemyr-sokoban': BaxemyrSokoban;
   }
 }
 
